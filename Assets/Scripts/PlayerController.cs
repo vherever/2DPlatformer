@@ -5,15 +5,18 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D myRigidbody;
 
+    private Animator myAnimator;
+
 	[SerializeField]
 	private float movementSpeed;
-
+    
 	private bool facingRight;
 
 	// Use this for initialization
 	void Start () {
 		facingRight = true;
 		myRigidbody = GetComponent<Rigidbody2D> ();
+        myAnimator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,8 @@ public class PlayerController : MonoBehaviour {
 
 	private void HandleMovement(float horizontal) {
 		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
+
+        myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
 	}
 
 	private void Flip(float horizontal) {
