@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 
 	[SerializeField]
 	private float movementSpeed;
+
+    private bool attack;
     
 	private bool facingRight;
 
@@ -18,6 +20,11 @@ public class PlayerController : MonoBehaviour {
 		myRigidbody = GetComponent<Rigidbody2D> ();
         myAnimator = GetComponent<Animator>();
 	}
+
+    void Update()
+    {
+        HandleInput();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -26,13 +33,35 @@ public class PlayerController : MonoBehaviour {
 		HandleMovement (horizontal);
 
 		Flip(horizontal);
-	}
+
+        HandleAttack();
+
+        ResetValues();
+    }
 
 	private void HandleMovement(float horizontal) {
-		myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);
+       
+        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
+        	
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
 	}
+
+    private void HandleAttack()
+    {
+        if(attack)
+        {
+            myAnimator.SetTrigger("attack");           
+        }
+    }
+
+    private void HandleInput()
+    {
+        if(Input.GetKeyDown(KeyCode.RightControl))
+        {
+            attack = true;
+        }
+    }
 
 	private void Flip(float horizontal) {
 		if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight) {
@@ -44,6 +73,11 @@ public class PlayerController : MonoBehaviour {
 			transform.localScale = theScale;
 		}
 	}
+
+    private void ResetValues()
+    {
+        attack = false;
+    }
 }
 
 
