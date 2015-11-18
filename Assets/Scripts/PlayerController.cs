@@ -10,12 +10,17 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private float movementSpeed;
 
+    [SerializeField]
+    private float jumpHeight;
+
     private bool attack;
+
+    private bool jump;
     
 	private bool facingRight;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		facingRight = true;
 		myRigidbody = GetComponent<Rigidbody2D> ();
         myAnimator = GetComponent<Animator>();
@@ -28,8 +33,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
-		float horizontal = Input.GetAxis ("Horizontal");
+        float horizontal = Input.GetAxis ("Horizontal");
 		HandleMovement (horizontal);
 
 		Flip(horizontal);
@@ -39,12 +43,16 @@ public class PlayerController : MonoBehaviour {
         ResetValues();
     }
 
-	private void HandleMovement(float horizontal) {
-       
-        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);
-        	
+	private void HandleMovement(float horizontal) {        
+        
+        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);               	
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
+
+        if(jump)
+        {
+            myRigidbody.velocity = new Vector2(0, jumpHeight);            
+        }
 	}
 
     private void HandleAttack()
@@ -54,13 +62,18 @@ public class PlayerController : MonoBehaviour {
             myAnimator.SetTrigger("attack");           
         }
     }
-
+    
     private void HandleInput()
     {
         if(Input.GetKeyDown(KeyCode.RightControl))
         {
             attack = true;
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = true;
+        }        
     }
 
 	private void Flip(float horizontal) {
@@ -77,6 +90,7 @@ public class PlayerController : MonoBehaviour {
     private void ResetValues()
     {
         attack = false;
+        jump = false;        
     }
 }
 

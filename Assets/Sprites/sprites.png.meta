@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: e083fff0c058ca043be1dcfe63f9ea70
-timeCreated: 1447593949
-licenseType: Pro
+timeCreated: 1447843813
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Ground
+    21300002: sprites_1
+    21300004: Ground
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,6 +40,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -54,7 +57,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
