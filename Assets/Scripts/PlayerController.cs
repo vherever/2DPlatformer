@@ -12,6 +12,20 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private float jumpHeight;
+    
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;    
+    private bool grounded;
+    
+
+    public Transform wallCheck;
+    public float wallTouchRadius;
+    public LayerMask whatIsWall;
+    private bool touchingWall;
+
+
+    private bool doubleJumped;
 
     private bool attack;
 
@@ -36,7 +50,12 @@ public class PlayerController : MonoBehaviour {
         float horizontal = Input.GetAxis ("Horizontal");
 		HandleMovement (horizontal);
 
-		Flip(horizontal);
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+       
+        touchingWall = Physics2D.OverlapCircle(wallCheck.position, wallTouchRadius, whatIsWall);
+        
+
+        Flip(horizontal);
 
         HandleAttack();
 
@@ -50,30 +69,43 @@ public class PlayerController : MonoBehaviour {
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
 
         if(jump)
-        {
-            myRigidbody.velocity = new Vector2(0, jumpHeight);            
-        }
-	}
+            myRigidbody.velocity = new Vector2(0, jumpHeight);
+    }
 
     private void HandleAttack()
     {
         if(attack)
-        {
-            myAnimator.SetTrigger("attack");           
-        }
+            myAnimator.SetTrigger("attack");
     }
     
     private void HandleInput()
-    {
+    {  
+
         if(Input.GetKeyDown(KeyCode.RightControl))
-        {
             attack = true;
+
+        if (grounded)
+            doubleJumped = false;
+
+        if(touchingWall)
+        {
+            grounded = false;
+            doubleJumped = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && grounded)
+            jump = true;
+
+        if (Input.GetKeyDown(KeyCode.Space) && !doubleJumped && !grounded)
         {
             jump = true;
-        }        
+            doubleJumped = true;
+        }
+
+        if (touchingWall)
+        {
+            Input.ResetInputAxes();
+        }
     }
 
 	private void Flip(float horizontal) {
@@ -93,54 +125,3 @@ public class PlayerController : MonoBehaviour {
         jump = false;        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
