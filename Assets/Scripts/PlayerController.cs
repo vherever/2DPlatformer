@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	private Rigidbody2D myRigidbody;
+	public Rigidbody2D myRigidbody;
 
     private Animator myAnimator;
 
