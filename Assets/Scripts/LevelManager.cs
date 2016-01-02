@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour {
 
 	public float respawnDelay;
 
+	private float gravityStore;
+
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();
@@ -32,14 +34,15 @@ public class LevelManager : MonoBehaviour {
 		Instantiate (deathParticle, player.transform.position, player.transform.rotation);
 		player.enabled = false;
 		player.GetComponent<Renderer>().enabled = false;
+		gravityStore = player.myRigidbody.gravityScale;
 		player.myRigidbody.gravityScale = 0f;
 		player.myRigidbody.velocity = Vector2.zero; // stop moving the camera
 		ScoreManager.AddPoints (-pointPenaltyOnDeath);
 		Debug.Log ("Player Respawn");
 		yield return new WaitForSeconds (respawnDelay);
+		player.myRigidbody.gravityScale = gravityStore;
 		player.transform.position = currentCheckpoint.transform.position;
 		player.enabled = true;
-		player.myRigidbody.gravityScale = 4f;
 		player.GetComponent<Renderer>().enabled = true;
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
 
