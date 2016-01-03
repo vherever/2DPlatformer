@@ -33,6 +33,9 @@ public class LevelManager : MonoBehaviour {
 	public IEnumerator RespawnPlayerGo() {
 		Instantiate (deathParticle, player.transform.position, player.transform.rotation);
 		player.enabled = false;
+
+		Collider2D collider = player.gameObject.GetComponent<Collider2D>();
+		collider.enabled = false; // disable collider
 		player.GetComponent<Renderer>().enabled = false;
 		gravityStore = player.myRigidbody.gravityScale;
 		player.myRigidbody.gravityScale = 0f;
@@ -40,6 +43,7 @@ public class LevelManager : MonoBehaviour {
 		ScoreManager.AddPoints (-pointPenaltyOnDeath);
 		Debug.Log ("Player Respawn");
 		yield return new WaitForSeconds (respawnDelay);
+		collider.enabled = true;
 		player.myRigidbody.gravityScale = gravityStore;
 		player.transform.position = currentCheckpoint.transform.position;
 		player.enabled = true;

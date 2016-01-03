@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: eedd8ee913ac2d34d9f24e14c7217dfe
-timeCreated: 1447679145
-licenseType: Free
+guid: 133d511150a67554e9c584c43092e4cb
+timeCreated: 1451820294
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Spritesheet_0
-    21300002: Spritesheet_1
-    21300004: Spritesheet_2
-    21300006: Spritesheet_3
-    21300008: Spritesheet_4
-    21300010: Spritesheet_5
-    21300012: Spritesheet_6
-    21300014: Spritesheet_7
-    21300016: Spritesheet_8
-    21300018: Spritesheet_9
-    21300020: Spritesheet_10
-    21300022: Spritesheet_11
-    21300024: Spritesheet_12
+    21300000: Spritesheet_red_ninja_0
+    21300002: Spritesheet_red_ninja_1
+    21300004: Spritesheet_red_ninja_2
+    21300006: Spritesheet_red_ninja_3
+    21300008: Spritesheet_red_ninja_4
+    21300010: Spritesheet_red_ninja_5
+    21300012: Spritesheet_red_ninja_6
+    21300014: Spritesheet_red_ninja_7
+    21300016: Spritesheet_red_ninja_8
+    21300018: Spritesheet_red_ninja_9
+    21300020: Spritesheet_red_ninja_10
+    21300022: Spritesheet_red_ninja_11
+    21300024: Spritesheet_red_ninja_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,7 +62,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Spritesheet_0
+    - name: Spritesheet_red_ninja_0
       rect:
         serializedVersion: 2
         x: 0
@@ -72,7 +72,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_1
+    - name: Spritesheet_red_ninja_1
       rect:
         serializedVersion: 2
         x: 88
@@ -82,7 +82,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_2
+    - name: Spritesheet_red_ninja_2
       rect:
         serializedVersion: 2
         x: 176
@@ -92,7 +92,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_3
+    - name: Spritesheet_red_ninja_3
       rect:
         serializedVersion: 2
         x: 264
@@ -102,7 +102,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_4
+    - name: Spritesheet_red_ninja_4
       rect:
         serializedVersion: 2
         x: 352
@@ -112,7 +112,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_5
+    - name: Spritesheet_red_ninja_5
       rect:
         serializedVersion: 2
         x: 0
@@ -122,7 +122,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_6
+    - name: Spritesheet_red_ninja_6
       rect:
         serializedVersion: 2
         x: 88
@@ -132,7 +132,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_7
+    - name: Spritesheet_red_ninja_7
       rect:
         serializedVersion: 2
         x: 176
@@ -142,7 +142,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_8
+    - name: Spritesheet_red_ninja_8
       rect:
         serializedVersion: 2
         x: 0
@@ -152,7 +152,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_9
+    - name: Spritesheet_red_ninja_9
       rect:
         serializedVersion: 2
         x: 88
@@ -162,7 +162,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_10
+    - name: Spritesheet_red_ninja_10
       rect:
         serializedVersion: 2
         x: 0
@@ -172,7 +172,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_11
+    - name: Spritesheet_red_ninja_11
       rect:
         serializedVersion: 2
         x: 88
@@ -182,7 +182,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spritesheet_12
+    - name: Spritesheet_red_ninja_12
       rect:
         serializedVersion: 2
         x: 0
