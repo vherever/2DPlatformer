@@ -40,11 +40,29 @@ public class PlayerController : MonoBehaviour {
 	private float shotDelayCounter;
 	private float timestamp;
 
+	public AudioClip[] Clips;
+	private AudioSource[] audioSources;
+
+
+
     // Use this for initialization
     void Start () {
 		facingRight = true;
 		myRigidbody = GetComponent<Rigidbody2D> ();
         myAnimator = GetComponent<Animator>();
+
+		audioSources = new AudioSource[Clips.Length];
+		int i = 0;
+		while (i < Clips.Length) {
+			GameObject child = new GameObject("Player");
+			child.transform.parent = gameObject.transform;
+			
+			audioSources[i] = child.AddComponent<AudioSource>() as AudioSource;
+			
+			audioSources[i].clip = Clips[i];
+			
+			i++;
+		}
 	}
 
     void Update()
@@ -116,13 +134,16 @@ public class PlayerController : MonoBehaviour {
             doubleJumped = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && grounded)
-            jump = true;
+		if (Input.GetKeyDown (KeyCode.Space) && grounded) {
+			jump = true;
+			audioSources[0].Play();
+		}            
 
         if (Input.GetKeyDown(KeyCode.Space) && !doubleJumped && !grounded)
         {
             jump = true;
             doubleJumped = true;
+			audioSources[0].Play();
         }
 
         if (touchingWall)
