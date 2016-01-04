@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour {
 	public Transform firePoint;
 	public GameObject ninjaStar;
 
+	public float shotDelay;
+	private float shotDelayCounter;
+	private float timestamp;
+
     // Use this for initialization
     void Start () {
 		facingRight = true;
@@ -84,10 +88,24 @@ public class PlayerController : MonoBehaviour {
     private void HandleInput()
     {  
 
-		if (Input.GetKeyDown (KeyCode.RightControl)) {
+		if (Time.time >= timestamp && Input.GetKeyDown (KeyCode.RightControl)) {
 			attack = true;
 			Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
-		}            
+			timestamp = Time.time + shotDelay;
+			//* Use * commented shotDelayCounter to fire while button pressed
+			//*shotDelayCounter = shotDelay;
+		} 
+
+
+		//*if (Input.GetKey (KeyCode.RightControl)) {
+		//* shotDelayCounter -= Time.deltaTime;
+
+			//*if(shotDelayCounter <= 0) {
+			//*	shotDelayCounter = shotDelay;
+			//*	Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
+			//*}
+		//*}
+
 
         if (grounded)
             doubleJumped = false;
