@@ -14,11 +14,15 @@ public class LevelManager : MonoBehaviour {
 
 	public float respawnDelay;
 
+	private CameraController camera;
+
 	private float gravityStore;
 
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController> ();
+	
+		camera = FindObjectOfType<CameraController> ();
 	}
 	
 	// Update is called once per frame
@@ -37,17 +41,19 @@ public class LevelManager : MonoBehaviour {
 		Collider2D collider = player.gameObject.GetComponent<Collider2D>();
 		collider.enabled = false; // disable collider
 		player.GetComponent<Renderer>().enabled = false;
-		gravityStore = player.myRigidbody.gravityScale;
-		player.myRigidbody.gravityScale = 0f;
-		player.myRigidbody.velocity = Vector2.zero; // stop moving the camera
+		camera.isFollowing = false;
+		//gravityStore = player.myRigidbody.gravityScale;
+		//player.myRigidbody.gravityScale = 0f;
+		//player.myRigidbody.velocity = Vector2.zero; // stop moving the camera
 		ScoreManager.AddPoints (-pointPenaltyOnDeath);
 		Debug.Log ("Player Respawn");
 		yield return new WaitForSeconds (respawnDelay);
 		collider.enabled = true;
-		player.myRigidbody.gravityScale = gravityStore;
+		//player.myRigidbody.gravityScale = gravityStore;
 		player.transform.position = currentCheckpoint.transform.position;
 		player.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
+		camera.isFollowing = true;
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
 
 	}

@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour {
     
 	private bool facingRight;
 
+	public Transform firePoint;
+	public GameObject ninjaStar;
+
     // Use this for initialization
     void Start () {
 		facingRight = true;
@@ -81,8 +84,10 @@ public class PlayerController : MonoBehaviour {
     private void HandleInput()
     {  
 
-        if(Input.GetKeyDown(KeyCode.RightControl))
-            attack = true;
+		if (Input.GetKeyDown (KeyCode.RightControl)) {
+			attack = true;
+			Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
+		}            
 
         if (grounded)
             doubleJumped = false;
