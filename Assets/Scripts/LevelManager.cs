@@ -55,6 +55,7 @@ public class LevelManager : MonoBehaviour {
 		collider.enabled = true;
 		//player.myRigidbody.gravityScale = gravityStore;
 		player.transform.position = currentCheckpoint.transform.position;
+		player.knockbackCount = 0;
 		player.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
 		healthManager.FullHealth ();

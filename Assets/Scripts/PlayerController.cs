@@ -40,6 +40,11 @@ public class PlayerController : MonoBehaviour {
 	private float shotDelayCounter;
 	private float timestamp;
 
+	public float knockback;
+	public float knockBackLength;
+	public float knockbackCount;
+	public bool knockFromRight;
+
 	public AudioClip[] Clips;
 	private AudioSource[] audioSources;
 
@@ -88,8 +93,15 @@ public class PlayerController : MonoBehaviour {
     }
 
 	private void HandleMovement(float horizontal) {        
-        
-        myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y);               	
+		if (knockbackCount <= 0) {
+				myRigidbody.velocity = new Vector2 (horizontal * movementSpeed, myRigidbody.velocity.y);               	
+		} else {
+			if(knockFromRight) 
+				myRigidbody.velocity = new Vector2(-knockback, knockback);
+			if(!knockFromRight)
+				myRigidbody.velocity = new Vector2(knockback, knockback);
+			knockbackCount -= Time.deltaTime;
+		}
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
 

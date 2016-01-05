@@ -18,6 +18,14 @@ public class HurtPlayerOnContact : MonoBehaviour {
 		if (other.name == "Player") {
 			HealthManager.HurtPlayer(damageToGive);
 			other.GetComponent<AudioSource> ().Play ();
+
+			var player = other.GetComponent<PlayerController> ();
+			player.knockbackCount = player.knockBackLength;
+
+			if(other.transform.position.x < transform.position.x)
+				player.knockFromRight = true;
+			else 
+				player.knockFromRight = false;
 		}
 	}
 }
